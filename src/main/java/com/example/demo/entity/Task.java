@@ -19,11 +19,6 @@ public class Task {
     private String name;
 
     @Column(length = 5)
-    private int isInProgress;
+    private String status;
 
-    @Column(length = 5)
-    private int isCompleted;
-
-    @Column(length = 20)
-    private String code;
 }

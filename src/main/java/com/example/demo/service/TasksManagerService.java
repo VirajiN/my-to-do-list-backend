@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
+import java.util.UUID;
 
 @Service
 public class TasksManagerService {
@@ -21,21 +23,19 @@ public class TasksManagerService {
     }
 
     public TaskDto saveTask(TaskDto task)  {
-        Optional<Task> resProduct = taskRepository.findByCode(task.getCode());
-        if(!resProduct.isPresent()) {
+
+            Random rd = new Random();
             Task taskEntity = new Task();
+            task.setId(rd.nextLong());
             BeanUtils.copyProperties(task, taskEntity);
             TaskDto taskDto = new TaskDto();
             BeanUtils.copyProperties(taskRepository.save(taskEntity), taskDto);
             return taskDto;
-        }else {
-            throw new ResourceAlreadyExistsException("Tasks code already exists");
-        }
 
     }
 
     public TaskDto updatetask(TaskDto task){
-        Optional<Task> resProduct = taskRepository.findByCode(task.getCode());
+        Optional<Task> resProduct = taskRepository.findById(task.getId);
         if(resProduct.isPresent()) {
             Task taskEntity = new Task();
             BeanUtils.copyProperties(task, taskEntity);

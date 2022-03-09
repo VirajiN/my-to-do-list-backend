@@ -1,23 +1,15 @@
 package com.example.demo.Requests;
 
+import com.example.demo.Status;
+
 import javax.validation.constraints.NotEmpty;
 
 public class TaskRequest {
 
-    @NotEmpty
-    private String code;
+
     @NotEmpty
     private String name;
-    private int isInProgress;
-    private int isCompleted;
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
+    private Status status;
 
     public String getName() {
         return name;
@@ -27,19 +19,11 @@ public class TaskRequest {
         this.name = name;
     }
 
-    public int getIsInProgress() {
-        return isInProgress;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setIsInProgress(int isInProgress) {
-        this.isInProgress = isInProgress;
-    }
-
-    public int getIsCompleted() {
-        return isCompleted;
-    }
-
-    public void setIsCompleted(int isCompleted) {
-        this.isCompleted = isCompleted;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

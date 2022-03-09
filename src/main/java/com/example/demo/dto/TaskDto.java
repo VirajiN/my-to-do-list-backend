@@ -7,7 +7,5 @@ public class TaskDto {
 
     private long id;
     private String name;
-    private int isInProgress;
-    private int isCompleted;
-    private String code;
+    private String status;
 }
